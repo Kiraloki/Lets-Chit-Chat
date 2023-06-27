@@ -71,6 +71,16 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
 
   const handleRename = async () => {
     if (!groupChatName) return;
+    if (selectedChat.groupAdmin._id !== user._id) {
+      toast({
+        title: "Only admins can change the group name!",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
 
     try {
       setRenameLoading(true);
