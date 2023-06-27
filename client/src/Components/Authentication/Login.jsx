@@ -45,10 +45,14 @@ const Login = () => {
         },
       };
 
+      // const { data } = await axios.post(
+      //   "/api/v1/users/login",
+      //   { email, password },
+      //   config
+      // );
+
       const { data } = await axios.post(
-        "/api/v1/users/login",
-        { email, password },
-        config
+        "https://lets-chit-chat-12f9.onrender.com/api/v1/users/login"
       );
 
       // console.log(JSON.stringify(data));
