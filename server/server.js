@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const userRouter = require("./routes/user");
 const chatRouter = require("./routes/chats");
 const messageRouter = require("./routes/messages");
