@@ -32,6 +32,7 @@ const GroupChatModal = ({ children }) => {
   const { user, chats, setChats } = ChatState();
 
   const handleGroup = (userToAdd) => {
+    console.log(userToAdd);
     if (selectedUsers.includes(userToAdd)) {
       toast({
         title: "User already added",
@@ -165,6 +166,7 @@ const GroupChatModal = ({ children }) => {
                 <UserBadgeItem
                   key={u._id}
                   user={u}
+                  admin ={user}
                   handleFunction={() => handleDelete(u)}
                 />
               ))}
