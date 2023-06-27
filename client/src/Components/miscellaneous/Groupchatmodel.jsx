@@ -18,6 +18,7 @@ import { useState } from "react";
 import { ChatState } from "../../Context/ChatProvider";
 import UserBadgeItem from "../userAvatar/Userbadges";
 import UserListItem from "../userAvatar/Userlist";
+const baseUrl = "https://lets-chit-chat-12f9.onrender.com";
 
 const GroupChatModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -59,7 +60,7 @@ const GroupChatModal = ({ children }) => {
         },
       };
       const { data } = await axios.get(
-        `/api/v1/users?search=${search}`,
+        `${baseURL}/api/v1/users?search=${search}`,
         config
       );
       console.log(data);
@@ -100,7 +101,7 @@ const GroupChatModal = ({ children }) => {
         },
       };
       const { data } = await axios.post(
-        `/api/v1/chats/group`,
+        `${baseUrl}/api/v1/chats/group`,
         {
           name: groupChatName,
           users: JSON.stringify(selectedUsers.map((u) => u._id)),

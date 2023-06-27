@@ -10,6 +10,8 @@ import { ChatState } from "../../Context/ChatProvider";
 import { useNavigate } from "react-router-dom";
 // import { unstable_HistoryRouter } from "react-router-dom";
 
+const baseUrl = "https://lets-chit-chat-12f9.onrender.com";
+
 function Signup() {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
@@ -58,7 +60,7 @@ function Signup() {
         },
       };
       const { data } = await axios.post(
-        "/api/v1/users",
+        `${baseUrl}/api/v1/users`,
         {
           name,
           email,

@@ -17,6 +17,7 @@ import UpdateGroupChatModal from "./miscellaneous/Updategroupchatmodal";
 import { ChatState } from "../Context/ChatProvider";
 const ENDPOINT = "https://lets-chit-chat-12f9.onrender.com";
 var socket, selectedChatCompare;
+const baseUrl = "https://lets-chit-chat-12f9.onrender.com";
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [messages, setMessages] = useState([]);
@@ -63,7 +64,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
       setLoading(true);
 
       const { data } = await axios.get(
-        `/api/v1/message/${selectedChat._id}`,
+        `${baseUrl}/api/v1/message/${selectedChat._id}`,
         config
       );
       setMessages(data);
@@ -99,7 +100,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         };
         setNewMessage("");
         const { data } = await axios.post(
-          "/api/v1/message",
+          `${baseUrl}/api/v1/message`,
           {
             content: newMessage,
             chatId: selectedChat,

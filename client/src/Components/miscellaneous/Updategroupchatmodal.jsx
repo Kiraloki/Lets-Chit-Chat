@@ -21,6 +21,7 @@ import { useState } from "react";
 import { ChatState } from "../../Context/ChatProvider";
 import UserBadgeItem from "../userAvatar/Userbadges";
 import UserListItem from "../userAvatar/Userlist";
+const baseUrl = "https://lets-chit-chat-12f9.onrender.com";
 
 const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -49,7 +50,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.get(
-        `/api/v1/users?search=${search}`,
+        `${baseUrl}/api/v1/users?search=${search}`,
         config
       );
       console.log(data);
@@ -79,7 +80,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.put(
-        `/api/v1/chats/rename`,
+        `${baseUrl}/api/v1/chats/rename`,
         {
           chatId: selectedChat._id,
           chatName: groupChatName,
@@ -137,7 +138,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.put(
-        `/api/v1/chats/groupadd`,
+        `${baseUrl}/api/v1/chats/groupadd`,
         {
           chatId: selectedChat._id,
           userId: user1._id,
@@ -182,7 +183,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         },
       };
       const { data } = await axios.put(
-        `/api/v1/chats/groupremove`,
+        `${baseUrl}/api/v1/chats/groupremove`,
         {
           chatId: selectedChat._id,
           userId: user1._id,

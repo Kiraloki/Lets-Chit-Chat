@@ -30,7 +30,8 @@ import NotificationBadge from "react-notification-badge";
 import { Effect } from "react-notification-badge";
 import { getSender } from "../../config/Chatlogic";
 import UserListItem from "../userAvatar/Userlist";
-import { ChatState } from "../../Context/ChatProvider";
+import { ChatState } from "../../Context/ChatProvider"; 
+const baseUrl = "https://lets-chit-chat-12f9.onrender.com"; 
 
 function SideDrawer() {
   const [search, setSearch] = useState("");
@@ -80,8 +81,7 @@ function SideDrawer() {
         },
       };
 
-      const { data } = await axios.get(
-        `/api/v1/users?search=${search}`,
+      const { data } = await axios.get(`${baseUrl}/api/v1/users?search=${search}`,
         config
       );
 
@@ -110,7 +110,7 @@ function SideDrawer() {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.post(`/api/v1/chats`, { userId }, config);
+      const { data } = await axios.post(`${baseUrl}/api/v1/chats`, { userId }, config);
 
       if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
       setSelectedChat(data);

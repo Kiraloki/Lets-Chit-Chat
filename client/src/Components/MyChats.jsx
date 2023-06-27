@@ -8,6 +8,7 @@ import ChatLoading from "./ChatLoading";
 import GroupChatModal from "./miscellaneous/Groupchatmodel";
 import { Button } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
+const baseUrl = "https://lets-chit-chat-12f9.onrender.com";
 
 const MyChats = ({ fetchAgain }) => {
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
@@ -25,7 +26,7 @@ const MyChats = ({ fetchAgain }) => {
         },
       };
 
-      const { data } = await axios.get("/api/v1/chats", config);
+      const { data } = await axios.get(`${baseUrl}/api/v1/chats`, config);
       setChats(data);
     } catch (error) {
       toast({
